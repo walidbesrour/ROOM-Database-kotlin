@@ -1,6 +1,7 @@
 package com.example.roomdatabasekotlin.viewmodel
 
 import android.app.Application
+import android.content.Context
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
@@ -12,8 +13,8 @@ import kotlinx.coroutines.launch
 
 class ConfigurationVM (application: Application): AndroidViewModel(application){
 
-    private val readAllData: LiveData<List<ConfigurationEntity>>
-    private val repository: ConfigurationRepository
+     var readAllData: LiveData<List<ConfigurationEntity>>
+     val repository: ConfigurationRepository
 
 
     init {
@@ -26,6 +27,18 @@ class ConfigurationVM (application: Application): AndroidViewModel(application){
         viewModelScope.launch(Dispatchers.IO) {
             repository.addconfiguration(configurationEntity)
         }
+    }
+
+    fun updateconfiguration(configurationEntity: ConfigurationEntity){
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.updateconfiguration(configurationEntity)
+        }
+    }
+
+    fun getconfiguration(context: Context) : LiveData<List<ConfigurationEntity>>? {
+
+        readAllData = repository.readAllData
+        return readAllData
     }
 
 }

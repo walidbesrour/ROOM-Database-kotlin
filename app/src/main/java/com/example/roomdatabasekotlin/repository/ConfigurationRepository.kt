@@ -11,4 +11,9 @@ class ConfigurationRepository(private val daoConfiguration: DaoConfiguration) {
     suspend fun addconfiguration(Configuration: ConfigurationEntity){
         daoConfiguration.addconfiguration(Configuration)
     }
+
+
+    suspend fun updateconfiguration(Configuration: ConfigurationEntity){
+        daoConfiguration.updateconfiguration(Configuration)
+    }
 }

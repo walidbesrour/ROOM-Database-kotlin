@@ -7,6 +7,7 @@ import androidx.room.RoomDatabase
 import com.example.roomdatabasekotlin.data.dao.DaoConfiguration
 import com.example.roomdatabasekotlin.data.entity.ConfigurationEntity
 
+
 @Database(entities = [ConfigurationEntity::class], version = 1, exportSchema = false)
 abstract class ConfigurationDatabase : RoomDatabase(){
 
